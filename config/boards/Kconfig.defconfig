@@ -1,5 +1,16 @@
-config SHIELD_MY_BOARD_LEFT
-    def_bool $(shields_list_contains,my_board_left)
+if SHIELD_MY_BOARD_LEFT
 
-    config SHIELD_MY_BOARD_RIGHT
-    def_bool $(shields_list_contains,my_board_right)
+config ZMK_KEYBOARD_NAME
+    default "My Board"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_MY_BOARD_LEFT || SHIELD_MY_BOARD_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
